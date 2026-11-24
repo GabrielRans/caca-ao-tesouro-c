@@ -1,0 +1,11 @@
+# Executaveis
+*.exe
+
+# Arquivo objeto
+*.o
+
+# Arquivos de depuração
+*.out
+
+# Arquivos temporarios
+*.temp
