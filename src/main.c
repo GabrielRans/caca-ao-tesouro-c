@@ -1,17 +1,47 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(void) {
     int opcao;
+    int linha, coluna;
+
+    char mapa[5][5];
     char tabuleiro[5][5];
 
-    int linha, coluna;
+    srand(time(NULL));
+
+
 
     for (linha = 0; linha < 5; linha++) {
         for (coluna = 0; coluna < 5; coluna++) {
+            mapa[linha][coluna] = '~';
             tabuleiro[linha][coluna] = '~';
         }
     }
 
+    int tesouros = 0;
+    int armadilhas = 0;
+
+    while (tesouros < 3) {
+        linha = rand() % 5;
+        coluna = rand() % 5;
+
+        if (mapa[linha][coluna] == '~') {
+            mapa[linha][coluna] = 'T';
+            tesouros++;
+        }
+    }
+
+    while (armadilhas < 2) {
+        linha = rand() % 5;
+        coluna = rand() % 5;
+
+        if (mapa[linha][coluna] == '~') {
+            mapa[linha][coluna] = 'A';
+            armadilhas++;
+        }
+    }
 
     do {
         printf("\n==========================================\n");
@@ -27,6 +57,15 @@ int main(void) {
         switch (opcao) {
             case 1:
             printf("\nIniciando partida...\n");
+
+            printf("\nMAPA INTERNO (TESTE):\n");
+
+            for (linha = 0; linha < 5; linha++) {
+                for (coluna = 0; coluna < 5; coluna++) {
+                    printf("%c ", mapa[linha][coluna]);
+                }
+                printf("\n");
+            }
 
             printf("\nTABULEIRO:\n");
 
